@@ -22,3 +22,19 @@ func TestKthLargestElement(t *testing.T) {
 		}
 	}
 }
+
+func TestInsertSort(t *testing.T) {
+	tests := []struct {
+		nums []int
+		want []int
+	}{
+		{[]int{1, 4, 3, 5}, []int{1, 3, 4, 5}},
+	}
+
+	for _, test := range tests {
+		result := insertSort(test.nums)
+		if !reflect.DeepEqual(result, test.want) {
+			t.Errorf("insertSort(%v) => %v,want %v", test.nums, result, test.want)
+		}
+	}
+}
