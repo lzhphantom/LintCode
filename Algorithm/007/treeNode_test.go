@@ -1,7 +1,6 @@
 package _07
 
 import (
-	"fmt"
 	"reflect"
 	"testing"
 )
@@ -62,5 +61,5 @@ func TestSs(t *testing.T) {
 			t.Errorf("serialize(%v) => %s,want %s", *test.tn, result, test.want)
 		}
 	}
-	fmt.Println([]int{1, 2, 3}[:1])
+
 }
