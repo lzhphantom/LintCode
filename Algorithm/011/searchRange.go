@@ -46,14 +46,15 @@ func searchRange1(root *TreeNode, k1 int, k2 int) []int {
 		return []int{}
 	}
 	result := make([]int, 0)
-	if root.Left != nil && root.Val > k1 {
+	if root.Left != nil {
 		result = append(result, searchRange(root.Left, k1, k2)...)
 	}
 	if root.Val >= k1 && root.Val <= k2 {
 		result = append(result, root.Val)
 	}
-	if root.Right != nil && root.Val < k2 {
+	if root.Right != nil {
 		result = append(result, searchRange(root.Right, k1, k2)...)
 	}
+	sort.Ints(result)
 	return result
 }
