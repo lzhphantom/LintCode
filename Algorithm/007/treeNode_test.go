@@ -63,3 +63,37 @@ func TestSs(t *testing.T) {
 	}
 
 }
+
+func TestDs(t *testing.T) {
+	tests := []struct {
+		str  string
+		want *TreeNode
+	}{
+		{"1",
+			&TreeNode{
+				1,
+				nil, nil,
+			},
+		},
+		{
+			"1,3,7",
+			&TreeNode{
+				1,
+				&TreeNode{
+					3,
+					nil, nil,
+				},
+				&TreeNode{
+					7,
+					nil, nil,
+				},
+			},
+		},
+	}
+	for _, test := range tests {
+		result := deserialize(test.str)
+		if !reflect.DeepEqual(result, test.want) {
+			t.Errorf("deserialize(%s) => %v,want %v", test.str, result, test.want)
+		}
+	}
+}

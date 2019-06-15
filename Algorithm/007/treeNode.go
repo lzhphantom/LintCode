@@ -65,19 +65,46 @@ func deserialize(data string) *TreeNode {
 	}
 	tn := new(TreeNode)
 	strArr := strings.Split(data, ",")
-	for index, str := range strArr {
-		if index == 0 {
-			tn.val, _ = strconv.Atoi(str)
-		}
-		if index%2 != 0 {
-			//left
-			if reflect.DeepEqual(str, strDouble) {
-
-			}
-		} else {
-			//right
-		}
-
-	}
+	deserializeMo(strArr, tn, true)
 	return tn
+}
+
+func deserializeMo(strArr []string, treeNode *TreeNode, first bool) {
+	if len(strArr) == 0 {
+		return
+	}
+	if !reflect.DeepEqual(strArr[0], strDouble) && first {
+		treeNode.val, _ = strconv.Atoi(strArr[0])
+	}
+
+	if len(strArr) < 2 {
+		return
+	}
+	if !reflect.DeepEqual(strArr[1], strDouble) {
+		val, _ := strconv.Atoi(strArr[1])
+		treeNode.left = &TreeNode{
+			val: val,
+		}
+	}
+
+	if len(strArr) < 3 {
+		return
+	}
+	if !reflect.DeepEqual(strArr[2], strDouble) {
+		val, _ := strconv.Atoi(strArr[2])
+		treeNode.right = &TreeNode{
+			val: val,
+		}
+	}
+
+	strArr = strArr[3:]
+
+	if treeNode.left != nil {
+		deserializeMo(strArr, treeNode.left, false)
+	}
+
+	if treeNode.right != nil {
+		deserializeMo(strArr, treeNode.right, false)
+	}
+
 }
