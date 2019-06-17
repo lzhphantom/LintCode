@@ -1,9 +1,8 @@
 package _16
 
-import (
-	"fmt"
-	"reflect"
-)
+import "reflect"
+
+var FinalList [][]int
 
 func permuteUnique(nums []int) {
 	permAll(nums, 0)
@@ -11,12 +10,27 @@ func permuteUnique(nums []int) {
 
 func permAll(list []int, k int) {
 	if k == len(list)-1 {
-		fmt.Println(list)
+		var newlist []int
+		if len(FinalList) > 0 {
+			notExistFlag := true
+			for i := 0; i < len(FinalList); i++ {
+				if reflect.DeepEqual(FinalList[i], list) {
+					notExistFlag = false
+					break
+				}
+			}
+			if notExistFlag {
+				newlist = append([]int{}, list...)
+				FinalList = append(FinalList, newlist)
+			}
+
+		} else {
+			newlist = append([]int{}, list...)
+			FinalList = append(FinalList, newlist)
+		}
+
 	} else {
 		for i := k; i < len(list); i++ {
-			if reflect.DeepEqual(list[i], list[k]) && i != k {
-				continue
-			}
 			swap(&list[i], &list[k])
 			permAll(list, k+1)
 			swap(&list[i], &list[k])
