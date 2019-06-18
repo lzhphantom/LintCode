@@ -1,5 +1,6 @@
 package _29
 
+//给出三个字符串:s1、s2、s3，判断s3是否由s1和s2交叉构成。
 func isInterleave(s1, s2, s3 string) bool {
 	if len(s1)+len(s2) != len(s3) {
 		return false
