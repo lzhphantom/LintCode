@@ -43,3 +43,33 @@ func insert(intervals []*Interval, newInterval *Interval) []*Interval {
 	}
 	return result
 }
+
+func insertNew(intervals []*Interval, newInterval *Interval) []*Interval {
+	result := make([]*Interval, 0)
+
+	idx := 0
+	for idx < len(intervals) && intervals[idx].Start < newInterval.Start {
+		idx++
+	}
+	it := append([]*Interval{}, intervals[:idx]...)
+	it = append(it, newInterval)
+	it = append(it, intervals[idx:]...)
+	var last *Interval
+	for _, il := range it {
+		if last == nil || last.End < il.Start {
+			result = append(result, il)
+			last = il
+		} else {
+			last.End = max(last.End, il.End)
+		}
+	}
+	return result
+}
+
+func max(a, b int) int {
+	if a >= b {
+		return a
+	} else {
+		return b
+	}
+}
