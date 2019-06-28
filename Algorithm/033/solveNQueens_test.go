@@ -5,6 +5,7 @@ import (
 	"testing"
 )
 
+// 参考https://github.com/sol-prog/N-Queens-Puzzle/blob/master/nqueens.py
 func TestSolveNQueens(t *testing.T) {
 	tests := []struct {
 		nq   NQueen
