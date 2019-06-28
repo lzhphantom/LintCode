@@ -7,29 +7,41 @@ import (
 
 func TestSolveNQueens(t *testing.T) {
 	tests := []struct {
-		n    int
+		nq   NQueen
 		want [][]string
 	}{
 		{
-			1,
+			NQueen{
+				1, 0, make([][]string, 0),
+			},
 			[][]string{
 				{"Q"},
 			},
 		},
 		{
-			4,
+			NQueen{
+				4, 0, make([][]string, 0),
+			},
 			[][]string{
-				{".Q..", "...Q", "Q...", "..Q."},
-				{"..Q.", "...Q", ".Q..", "Q..."},
+				{".Q..",
+					"...Q",
+					"Q...",
+					"..Q."},
+				{"..Q.",
+					"Q...",
+					"...Q",
+					".Q.."},
 			},
 		},
 	}
 
 	for _, test := range tests {
-		result := solveNQueens(test.n)
+		test.nq.solve()
+		result := test.nq.allLayout
 
 		if !reflect.DeepEqual(test.want, result) {
-			t.Errorf("solveNQueens(%d) => %v, want %v", test.n, result, test.want)
+			t.Errorf("%d => %v, want %v", test.nq.size, result, test.want)
 		}
 	}
+
 }
