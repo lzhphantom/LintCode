@@ -129,15 +129,15 @@ func (nq *NQueen) solve() {
 	//fmt.Println("Found", nq.solutions, "solutions.")
 }
 
-func (nq *NQueen) putQueen(position []int, targetow int) {
-	if targetow == nq.size {
+func (nq *NQueen) putQueen(position []int, targetRow int) {
+	if targetRow == nq.size {
 		nq.showFullBoard(position)
 		nq.solutions++
 	} else {
 		for col := 0; col < nq.size; col++ {
-			if nq.checkPlace(position, targetow, col) {
-				position[targetow] = col
-				nq.putQueen(position, targetow+1)
+			if nq.checkPlace(position, targetRow, col) {
+				position[targetRow] = col
+				nq.putQueen(position, targetRow+1)
 			}
 		}
 	}
