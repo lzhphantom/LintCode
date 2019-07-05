@@ -11,6 +11,17 @@ func reverse(head *ListNode) *ListNode {
 	return result
 }
 
+func reverseII(head *ListNode) *ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	} else {
+		newHead := reverseII(head.Next)
+		head.Next.Next = head
+		head.Next = nil
+		return newHead
+	}
+}
+
 var count int
 
 func changeValue(head *ListNode, copy *ListNode) *ListNode {

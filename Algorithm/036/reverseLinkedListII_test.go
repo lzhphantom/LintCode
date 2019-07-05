@@ -1,4 +1,4 @@
-package _35
+package _36
 
 import (
 	"reflect"
@@ -8,6 +8,7 @@ import (
 func TestReverse(t *testing.T) {
 	tests := []struct {
 		ln   *ListNode
+		m, n int
 		want *ListNode
 	}{
 		{&ListNode{
@@ -23,67 +24,44 @@ func TestReverse(t *testing.T) {
 				},
 			},
 		},
+			2, 4,
 			&ListNode{
-				1,
+				4,
 				&ListNode{
-					2,
+					1,
 					&ListNode{
-						3,
+						2,
 						&ListNode{
-							4,
+							3,
 							nil,
 						},
 					},
 				},
 			},
 		},
-	}
-	for _, test := range tests {
-		result := reverse(test.ln)
-		if !reflect.DeepEqual(result, test.want) {
-			t.Errorf("reverse(%v) => %v,want %v", test.ln, result, test.want)
-		}
-	}
-
-}
-
-func TestReverseII(t *testing.T) {
-	tests := []struct {
-		ln   *ListNode
-		want *ListNode
-	}{
-		{&ListNode{
-			4,
+		{
 			&ListNode{
-				3,
+				4,
 				&ListNode{
-					2,
+					3,
 					&ListNode{
-						1,
-						nil,
-					},
-				},
-			},
-		},
-			&ListNode{
-				1,
-				&ListNode{
-					2,
-					&ListNode{
-						3,
+						2,
 						&ListNode{
-							4,
+							1,
 							nil,
 						},
 					},
 				},
 			},
+			3, 7,
+			nil,
 		},
 	}
 	for _, test := range tests {
-		result := reverseII(test.ln)
+		result := reverse(test.ln, test.m, test.n)
 		if !reflect.DeepEqual(result, test.want) {
 			t.Errorf("reverse(%v) => %v,want %v", test.ln, result, test.want)
 		}
 	}
+
 }
