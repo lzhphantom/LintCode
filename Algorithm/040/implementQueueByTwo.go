@@ -2,33 +2,33 @@ package _40
 
 import "errors"
 
-type Stack []interface{}
+type MyQuene []interface{}
 
-func (s Stack) Len() int {
+func (s MyQuene) Len() int {
 	return len(s)
 }
 
-func (s Stack) Cap() int {
+func (s MyQuene) Cap() int {
 	return cap(s)
 }
 
-func (s *Stack) Push(value interface{}) {
+func (s *MyQuene) Push(value interface{}) {
 	*s = append(*s, value)
 }
 
-func (s *Stack) Top() (interface{}, error) {
+func (s *MyQuene) Top() (interface{}, error) {
 	if len(*s) == 0 {
 		return nil, errors.New("out of index, len is 0")
 	}
-	return (*s)[len(*s)-1], nil
+	return (*s)[0], nil
 }
 
-func (s *Stack) Pop() (interface{}, error) {
+func (s *MyQuene) Pop() (interface{}, error) {
 	theStack := *s
 	if len(theStack) == 0 {
 		return nil, errors.New("out of index,len is 0")
 	}
-	value := theStack[len(theStack)-1]
-	*s = theStack[:len(theStack)-1]
+	value := theStack[0]
+	*s = theStack[1:]
 	return value, nil
 }
