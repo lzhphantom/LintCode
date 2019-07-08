@@ -6,6 +6,9 @@ func maximumSubarray(arr []int) int {
 
 	for i := 1; i < len(arr)+1; i++ {
 		for j := 0; j <= len(arr)-i; j++ {
+			if arr[j] < 0 {
+				continue
+			}
 
 			now := getSum(arr[j : j+i])
 
