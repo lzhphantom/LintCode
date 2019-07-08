@@ -12,7 +12,7 @@ func TestMaximumSubarray(t *testing.T) {
 	}{
 		{
 			[]int{-2, 2, -3, 4, -1, 2, 1, -5, 3},
-			12,
+			6,
 		},
 		{
 			[]int{1, 2, 3, 4},

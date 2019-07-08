@@ -4,11 +4,23 @@ package _41
 func maximumSubarray(arr []int) int {
 	var result int
 
-	for _, value := range arr {
-		if value >= 0 {
-			result += value
+	for i := 1; i < len(arr)+1; i++ {
+		for j := 0; j <= len(arr)-i; j++ {
+
+			now := getSum(arr[j : j+i])
+
+			if now > result {
+				result = now
+			}
 		}
 	}
 
 	return result
+}
+
+func getSum(arr []int) (result int) {
+	for _, value := range arr {
+		result += value
+	}
+	return
 }
