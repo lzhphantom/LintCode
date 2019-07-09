@@ -21,6 +21,25 @@ func maximumSubarray(arr []int) int {
 	return result
 }
 
+func otherMaximumSubarray(arr []int) int {
+	var result int
+	var curmax int
+
+	for _, value := range arr {
+		if curmax <= 0 {
+			curmax = value
+		} else {
+			curmax += value
+		}
+
+		if result < curmax {
+			result = curmax
+		}
+	}
+
+	return result
+}
+
 func getSum(arr []int) (result int) {
 	for _, value := range arr {
 		result += value
