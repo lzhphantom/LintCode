@@ -3,35 +3,43 @@ package _43
 import "math"
 
 var resultList [][]int
-var final int
 
 //给定一个整数数组和一个整数 k，找出 k 个不重叠子数组使得它们的和最大。每个子数组的数字在数组中的位置应该是连续的
-func maximumSubarrayIII(arr []int, k int) {
+func maximumSubarrayIII(arr []int, k int) (result int) {
 	if k <= 0 || k > len(arr) {
-		return
+		return 0
 	}
-	if resultList == nil {
+	if resultList == nil || k > len(resultList) {
 		resultList = make([][]int, k-1)
 	}
 
 	if k != 1 {
-		for i := 1; i < len(arr)-k+1; i++ {
+		for i := 1; i <= len(arr)-k+1; i++ {
 			resultList[k-2] = arr[:i]
-			maximumSubarrayIII(arr[i:], k-1)
+			curResult := maximumSubarrayIII(arr[i:], k-1)
+			if curResult > result {
+				result = curResult
+			}
+			resultList[k-2] = nil
 		}
 	} else {
-		result := getMaxarr(arr)
+		curResult := getMaxarr(arr)
 		for _, list := range resultList {
-			result += getMaxarr(list)
+			curResult += getMaxarr(list)
 		}
-		if result > final {
-			final = result
+		if curResult > result {
+			result = curResult
 		}
 	}
+
+	return result
 
 }
 
 func getMaxarr(arr []int) int {
+	if arr == nil {
+		return 0
+	}
 	sum := math.MinInt32
 	var cursum int
 	for _, value := range arr {
