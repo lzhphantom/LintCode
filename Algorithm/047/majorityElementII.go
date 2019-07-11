@@ -8,19 +8,26 @@ func majorityElementII(arr []int) int {
 	if !sort.IntsAreSorted(arr) {
 		sort.Ints(arr)
 	}
+	var maxNum int
+	var maxCount int
 	var curNum = arr[0]
 	var count int
 	for _, value := range arr {
 		if value == curNum {
 			count++
 		} else {
-			if count > len(arr)/3 {
-				break
+			if count > len(arr)/3 && count > maxCount {
+				maxCount = count
+				maxNum = curNum
 			}
 			curNum = value
 			count = 1
 		}
 	}
+	if count > len(arr)/3 && count > maxCount {
+		maxCount = count
+		maxNum = curNum
+	}
 
-	return curNum
+	return maxNum
 }

@@ -2,6 +2,8 @@ package _48
 
 import "sort"
 
+// 给定一个整型数组，找到主元素，它在数组中的出现次数严格大于数组元素个数的1/k。
+// *数组中只有唯一的主元素
 func majorityNumberIII(arr []int, k int) int {
 	if !sort.IntsAreSorted(arr) {
 		sort.Ints(arr)
@@ -9,19 +11,23 @@ func majorityNumberIII(arr []int, k int) int {
 	var maxNumber int
 	var maxCount int
 	curNumber := arr[0]
-	var curcount int
+	var curCount int
 
 	for _, value := range arr {
 		if value == curNumber {
-			curcount++
+			curCount++
 		} else {
-			if curcount > len(arr)/k && curcount > maxCount {
-				maxCount = curcount
+			if curCount > len(arr)/k && curCount > maxCount {
+				maxCount = curCount
 				maxNumber = curNumber
 			}
 			curNumber = value
-			curcount = 1
+			curCount = 1
 		}
+	}
+	if curCount > len(arr)/3 && curCount > maxCount {
+		maxCount = curCount
+		maxNumber = curNumber
 	}
 
 	return maxNumber

@@ -18,6 +18,10 @@ func TestMajorityElementII(t *testing.T) {
 			[]int{1, 2, 1, 2, 1, 3, 3},
 			1,
 		},
+		{
+			[]int{99, 2, 99, 2, 99, 3, 3, 1, 2, 1, 2},
+			2,
+		},
 	}
 
 	for _, test := range tests {
