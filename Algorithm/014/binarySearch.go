@@ -9,7 +9,7 @@ func binarySearch(nums []int, target int) int {
 		return start
 	}
 	if nums[end] == target {
-		return end
+		index = end
 	}
 
 	for end-start != 1 {
