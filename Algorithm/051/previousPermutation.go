@@ -5,6 +5,9 @@ package _51
 //给出排列[1,3,2,3]，其上一个排列是[1,2,3,3]
 //给出排列[1,2,3,4]，其上一个排列是[4,3,2,1]
 func perviousPermutation(arr []int) {
+	// 先从后往前找到前比后大的一对数
+	// 调换两个数
+	// 第一个数之后的数，倒序
 	for i := len(arr) - 1; i >= 0; i-- {
 		for j := len(arr) - 1; j > i; j-- {
 			if arr[i] > arr[j] {
