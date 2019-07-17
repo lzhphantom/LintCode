@@ -10,14 +10,24 @@ func threeSum(arr []int) [][]int {
 	startA := 0
 	startB := startA + 1
 	startC := startB + 1
+bad:
 	for startA < len(arr) {
-		if startC == len(arr) {
+		for startC == len(arr) {
 			startB++
 			startC = startB + 1
 		}
-		if startB == len(arr) {
+		if startC > len(arr) {
+			startC = -1
+		}
+		for startB == len(arr) {
 			startA++
 			startB = startA + 1
+			if startC == -1 {
+				startC = startB + 1
+				if startC >= len(arr) {
+					break bad
+				}
+			}
 		}
 		if arr[startA]+arr[startB]+arr[startC] == 0 {
 			newArr := []int{arr[startA], arr[startB], arr[startC]}
@@ -31,18 +41,21 @@ func threeSum(arr []int) [][]int {
 }
 
 func check(arr []int, target *[][]int) {
-	count := 0
+	var count int
 	for i := 0; i < len(*target); i++ {
 		curArr := append([]int{}, (*target)[i]...)
 		if len(curArr) == len(arr) {
+			count = 0
 			start := 0
-			end := len(arr) - 1
+			end := len(arr)
 			for start != end {
 				if curArr[start] == arr[start] {
 					count++
 				}
 				start++
 			}
+		} else {
+			continue
 		}
 		if count == len(arr) {
 			break
