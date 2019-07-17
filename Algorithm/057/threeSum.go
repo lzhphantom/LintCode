@@ -7,6 +7,11 @@ import "sort"
 //结果不能包含重复的三元组。
 func threeSum(arr []int) [][]int {
 	result := make([][]int, 0)
+
+	if !sort.IntsAreSorted(arr) {
+		sort.Ints(arr)
+	}
+
 	startA := 0
 	startB := startA + 1
 	startC := startB + 1
@@ -31,10 +36,29 @@ bad:
 		}
 		if arr[startA]+arr[startB]+arr[startC] == 0 {
 			newArr := []int{arr[startA], arr[startB], arr[startC]}
-			sort.Ints(newArr)
 			check(newArr, &result)
 		}
 		startC++
+	}
+
+	return result
+}
+
+//for test
+func threeSumOther(arr []int) [][]int {
+	result := make([][]int, 0)
+	if !sort.IntsAreSorted(arr) {
+		sort.Ints(arr)
+	}
+
+	for i := 0; i < len(arr); i++ {
+		for j := i + 1; j < len(arr); j++ {
+			for k := j + 1; k < len(arr); k++ {
+				if arr[i]+arr[j]+arr[k] == 0 {
+					check([]int{arr[i], arr[j], arr[k]}, &result)
+				}
+			}
+		}
 	}
 
 	return result
