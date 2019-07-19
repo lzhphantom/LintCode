@@ -21,6 +21,11 @@ func TestSearchInRotatedSortedArray(t *testing.T) {
 			0,
 			-1,
 		},
+		{
+			[]int{},
+			0,
+			-1,
+		},
 	}
 
 	for _, test := range tests {

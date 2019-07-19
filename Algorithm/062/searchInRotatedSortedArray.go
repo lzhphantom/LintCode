@@ -8,7 +8,7 @@ import "sort"
 func searchInRotatedSortedArray(arr []int, target int) int {
 
 	result := -1
-	if sort.IntsAreSorted(arr) {
+	if sort.IntsAreSorted(arr) && len(arr) > 0 {
 		min := 0
 		max := len(arr) - 1
 		if target < arr[min] || target > arr[max] {
