@@ -6,7 +6,7 @@ import (
 )
 
 //给一个包含 n 个整数的数组 S, 找到和与给定整数 target 最接近的三元组，返回这三个数的和。
-func Test(t *testing.T) {
+func TestThreeSumClosest(t *testing.T) {
 	tests := []struct {
 		arr    []int
 		target int
