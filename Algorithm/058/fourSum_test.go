@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func Test(t *testing.T) {
+func TestFourSum(t *testing.T) {
 	tests := []struct {
 		arr    []int
 		target int
