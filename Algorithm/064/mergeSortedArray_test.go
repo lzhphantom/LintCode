@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func Test(t *testing.T) {
+func TestMergeSortedArray(t *testing.T) {
 	tests := []struct {
 		arr1 []int
 		m    int
