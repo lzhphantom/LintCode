@@ -24,6 +24,13 @@ func TestNQueensII(t *testing.T) {
 			},
 			2,
 		},
+		{
+			NQueens{
+				7,
+				0,
+			},
+			40,
+		},
 	}
 
 	for _, test := range tests {
