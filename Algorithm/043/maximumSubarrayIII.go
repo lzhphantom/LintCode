@@ -4,6 +4,14 @@ import "math"
 
 var resultList [][]int
 
+//输入
+//查看差别
+//[-1,-2,-3,-100,-1,-50]
+//2
+//输出
+//0
+//期望答案
+//-2
 //给定一个整数数组和一个整数 k，找出 k 个不重叠子数组使得它们的和最大。每个子数组的数字在数组中的位置应该是连续的
 func maximumSubarrayIII(arr []int, k int) (result int) {
 	if k <= 0 || k > len(arr) {

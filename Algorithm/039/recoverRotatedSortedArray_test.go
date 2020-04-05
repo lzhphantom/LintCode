@@ -35,3 +35,34 @@ func TestRecoverRotatedSortedArray(t *testing.T) {
 		}
 	}
 }
+
+func TestRecoverRotatedSortedArrayII(t *testing.T) {
+	tests := []struct {
+		arr  *[]int
+		want []int
+	}{
+		{
+			&[]int{2, 3, 4, 1},
+			[]int{1, 2, 3, 4},
+		},
+		{
+			&[]int{1, 2, 3, 4},
+			[]int{1, 2, 3, 4},
+		},
+		{
+			&[]int{4, 1, 2, 3},
+			[]int{1, 2, 3, 4},
+		},
+		{
+			&[]int{6, 8, 9, 1, 2},
+			[]int{1, 2, 6, 8, 9},
+		},
+	}
+
+	for _, test := range tests {
+		recoverRotatedSortedArrayII(test.arr)
+		if !reflect.DeepEqual(test.arr, test.want) {
+			t.Errorf("recoverRotatedSortedArray(%v) => %v, want %d", *test.arr, *test.arr, test.want)
+		}
+	}
+}

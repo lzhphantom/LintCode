@@ -1,5 +1,10 @@
 package _38
 
+//输入
+//[[1,2,3,9],[2,3,9,10],[9,100,109,200]]
+//9
+//期望答案
+//3
 func searchIn2DMatrix(arr [][]int, target int) int {
 	var count int
 

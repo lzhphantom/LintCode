@@ -17,8 +17,8 @@ func TestCompareStrings(t *testing.T) {
 		},
 		{
 			"ABCD",
-			"ABC",
-			true,
+			"ABCC",
+			false,
 		},
 		{
 			"ABCD",

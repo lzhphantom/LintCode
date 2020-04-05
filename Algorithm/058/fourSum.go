@@ -1,7 +1,11 @@
 package _58
 
-import "sort"
+import (
+	"reflect"
+	"sort"
+)
 
+//Time Limit Exceeded
 func fourSum(arr []int, target int) [][]int {
 	if !sort.IntsAreSorted(arr) {
 		sort.Ints(arr)
@@ -102,6 +106,15 @@ func check(arr []int, list *[][]int) {
 		}
 	}
 	if count != len(arr) {
-		*list = append(*list, arr)
+		isExist := false
+		for _, val := range *list {
+			if reflect.DeepEqual(val, arr) {
+				isExist = true
+			}
+		}
+		if !isExist {
+			*list = append(*list, arr)
+		}
+
 	}
 }

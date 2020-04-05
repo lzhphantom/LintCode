@@ -18,6 +18,10 @@ func TestMaximumSubarray(t *testing.T) {
 			[]int{1, 2, 3, 4},
 			10,
 		},
+		{
+			[]int{-1},
+			-1,
+		},
 	}
 
 	for _, test := range tests {

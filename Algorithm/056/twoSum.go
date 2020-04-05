@@ -5,25 +5,20 @@ package _56
 //假设只有一组答案
 func twoSum(arr []int, target int) []int {
 	result := []int{-1, -1}
-
-	start := 0
-
-	for start < len(arr) {
-		if arr[start] < target && result[0] == -1 {
-			result[0] = start
-			continue
-		}
-		if result[0] != -1 {
-			if arr[start] == target-arr[result[0]] {
-				result[1] = start
-				break
-			}
-			if start == len(arr)-1 {
-				start = result[0]
-				result[0] = -1
+	first := 0
+	second := 1
+	for first < len(arr) && second < len(arr) {
+		if arr[first]+arr[second] == target {
+			result[0] = first
+			result[1] = second
+			break
+		} else {
+			second++
+			if second >= len(arr) {
+				first++
+				second = first + 1
 			}
 		}
-		start++
 	}
 
 	return result

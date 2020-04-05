@@ -6,6 +6,9 @@ import (
 )
 
 func threeSumClosest(arr []int, target int) int {
+	if len(arr) == 3 {
+		return arr[0] + arr[1] + arr[2]
+	}
 
 	if !sort.IntsAreSorted(arr) {
 		sort.Ints(arr)
